@@ -1,0 +1,30 @@
+DirectoryIndex index.php index.html index.htm index2.html
+
+ErrorDocument 400 https://infinityfree.net/errors/400/
+ErrorDocument 401 https://infinityfree.net/errors/401/
+ErrorDocument 403 https://infinityfree.net/errors/403/
+ErrorDocument 404 https://infinityfree.net/errors/404/
+ErrorDocument 500 https://infinityfree.net/errors/500/
+ErrorDocument 503 https://infinityfree.net/errors/503/
+
+//Rewrite http to https
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+// Remove .html .php existence
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+//Rewrite to www
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^jasaperancangsitusweb.epizy.com[nc]
+RewriteRule ^(.*)$ http://www.jasaperancangsitusweb.epizy.com/$1 [r=301,nc]
+
+//Caching schema
+<FilesMatch "\.(jpg|png|webp|ico|svg|css|js)$">
+Header set Cache-Control "max-age=0"
+</FilesMatch>
