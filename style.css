@@ -80,12 +80,15 @@ section {
   background: grey;
 }
 
-.header .contact-info p {
+.header .contact-info a {
   font-size: 1.5rem;
   color: #fff;
 }
-
-.header .contact-info p i {
+.header .contact-info a:hover,
+.header .contact-info a:hover i{
+  color: black;
+}
+.header .contact-info a i {
   padding-right: .5rem;
   color: white;
 }
@@ -124,8 +127,10 @@ section {
   font-weight: bolder;
 }
 
-.header .navbar .logo i {
-  color: grey;
+.header .navbar .logo img {
+  width: 100px;
+  height: 25px;
+  display: block;
 }
 
 .header .navbar .links a {
