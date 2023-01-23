@@ -17,5 +17,5 @@ window.onscroll = () =>{
    }
 }
 
- // aos
+// aos
  AOS.init();
